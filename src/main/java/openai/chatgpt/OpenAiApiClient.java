@@ -33,11 +33,21 @@ public class OpenAiApiClient {
         return client.send(request, HttpResponse.BodyHandlers.ofString()).body();
     }
 
-    private URI selectUri(OpenAiService service) {
-        return URI.create(switch (service) {
-            case DALL_E -> "https://api.openai.com/v1/images/generations";
-            case GPT_3 -> "https://api.openai.com/v1/completions";
-        });
+//    private URI selectUri(OpenAiService service) {
+//        return URI.create(switch (service) {
+//            case DALL_E -> "https://api.openai.com/v1/images/generations";
+//            case GPT_3 -> "https://api.openai.com/v1/completions";
+//        });
+//    }
+private URI selectUri(OpenAiService service) {
+    switch (service) {
+        case DALL_E:
+            return URI.create("https://api.openai.com/v1/images/generations");
+        case GPT_3:
+            return URI.create("https://api.openai.com/v1/completions");
+        default:
+            throw new IllegalArgumentException("Unknown service: " + service);
     }
+}
 
 }
