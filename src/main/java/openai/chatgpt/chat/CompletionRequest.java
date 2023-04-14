@@ -8,13 +8,15 @@ package openai.chatgpt.chat;
 //    }
 //
 //}
-package openai.chatgpt.chat;
 
 public class CompletionRequest {
     private String model;
     private String prompt;
     private double temperature;
     private int maxTokens;
+
+    CompletionRequest request = new CompletionRequest("text-davinci-003", "Hello world", 0.7, 100);
+
 
     public CompletionRequest(String model, String prompt, double temperature, int maxTokens) {
         this.model = model;
